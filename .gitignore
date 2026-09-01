@@ -1,0 +1,22 @@
+# CCS C Compiler generated files
+*.hex
+*.cof
+*.err
+*.lst
+*.sym
+*.esym
+*.xsym
+*.tre
+*.STA
+
+# IDE / local workspace files
+*.workspace
+
+# Proteus backup/history folders
+Project Backups/
+history/
+
+# Common temporary files
+*.tmp
+*.bak
+*~
