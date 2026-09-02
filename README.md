@@ -29,6 +29,30 @@ The system is divided into one master controller and three dedicated slave contr
   - Displays the detected obstacle on a graphical LCD.
   - Implements a radar-style visualization.
 
+## Project Images
+
+### Mobile Robot Prototype
+
+<p align="center">
+  <img src="docs/images/robot_prototype_1.jpeg" width="650">
+</p>
+
+Physical prototype of the mobile robot integrating the four-controller distributed architecture.
+
+<p align="center">
+  <img src="docs/images/robot_prototype_2.jpeg" width="650">
+</p>
+
+Mobile robot prototype with the GLCD radar visualization operating during system integration.
+
+### Proteus Schematic
+
+<p align="center">
+  <img src="docs/images/proteus_schematic.png" width="950">
+</p>
+
+Proteus schematic of the distributed system, including the master controller and the dedicated ultrasonic, motor-control, and radar subsystems.
+
 ## Communication
 
 ```mermaid
