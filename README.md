@@ -31,34 +31,30 @@ The system is divided into one master controller and three dedicated slave contr
 
 ## Communication
 
-```text
-Bluetooth / PC / Control Interface
-              |
-          UART / RS232
-              |
-        PIC18F46K22
-         SPI Master
-              |
-      +-------+-------+
-      |       |       |
- Ultrasonic  Motors  Radar
- PIC18F2550 PIC18F4550 PIC18F4550
-      |       |       |
-   Sensor    PWM     GLCD
-```text
-Bluetooth / PC / Control Interface
-              |
-          UART / RS232
-              |
-        PIC18F46K22
-         SPI Master
-              |
-      +-------+-------+
-      |       |       |
- Ultrasonic  Motors  Radar
- PIC18F2550 PIC18F4550 PIC18F4550
-      |       |       |
-   Sensor    PWM     GLCD
+
+````markdown
+```mermaid
+flowchart TD
+    UI["Control Interface<br/>Bluetooth / PC"]
+    MASTER["PIC18F46K22<br/><b>Master Controller</b>"]
+
+    ULTRA["PIC18F2550<br/><b>Ultrasonic Slave</b>"]
+    MOTOR["PIC18F4550<br/><b>Motor Slave</b>"]
+    RADAR["PIC18F4550<br/><b>Radar Slave</b>"]
+
+    SENSOR["Ultrasonic Sensor"]
+    MOTORS["DC Motors<br/>PWM Control"]
+    GLCD["Graphical LCD<br/>Radar Visualization"]
+
+    UI -->|"UART / RS232"| MASTER
+
+    MASTER -->|"SPI · CS1"| ULTRA
+    MASTER -->|"SPI · CS2"| MOTOR
+    MASTER -->|"SPI · CS3"| RADAR
+
+    ULTRA --> SENSOR
+    MOTOR --> MOTORS
+    RADAR --> GLCD
 ```
 
 ## SPI Command Protocol
