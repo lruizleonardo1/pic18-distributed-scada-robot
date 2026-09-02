@@ -45,7 +45,21 @@ Bluetooth / PC / Control Interface
  PIC18F2550 PIC18F4550 PIC18F4550
       |       |       |
    Sensor    PWM     GLCD
-´´´´
+```text
+Bluetooth / PC / Control Interface
+              |
+          UART / RS232
+              |
+        PIC18F46K22
+         SPI Master
+              |
+      +-------+-------+
+      |       |       |
+ Ultrasonic  Motors  Radar
+ PIC18F2550 PIC18F4550 PIC18F4550
+      |       |       |
+   Sensor    PWM     GLCD
+```
 
 ## SPI Command Protocol
 
