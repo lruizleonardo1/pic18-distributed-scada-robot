@@ -45,6 +45,7 @@ Bluetooth / PC / Control Interface
  PIC18F2550 PIC18F4550 PIC18F4550
       |       |       |
    Sensor    PWM     GLCD
+´´´´
 
 ## SPI Command Protocol
 
