@@ -45,3 +45,28 @@ Bluetooth / PC / Control Interface
  PIC18F2550 PIC18F4550 PIC18F4550
       |       |       |
    Sensor    PWM     GLCD
+
+## SPI Command Protocol
+
+The master controller communicates with each slave using a dedicated chip-select line. Commands and data are transferred as SPI bytes.
+
+| Command | Value | Target | Function |
+|---|---:|---|---|
+| `PAROO` | 0 | Motor slave | Stop the motors |
+| `ULTRA` | 1 | Ultrasonic slave | Request the ultrasonic distance value |
+| `MOTOR` | 2 | Motor slave | Trigger the target-position event |
+| `RADAR` | 3 | Radar slave | Defined radar command |
+| `FULLL` | 252 | Motor slave | Set maximum motor speed |
+| `ATRAS` | 253 | Motor slave | Move backward |
+| `ADELA` | 254 | Motor slave | Move forward |
+
+Motor speed values are also transmitted as byte values and used by the motor slave to update the PWM duty cycle.
+
+### Data Flow
+
+1. A command is received by the master controller through UART/RS232.
+2. The master requests a distance value from the ultrasonic slave through SPI.
+3. The ultrasonic slave measures the echo pulse using Timer1 and places the scaled distance value in the SPI buffer.
+4. The master receives the distance value and converts it into the working distance used by the positioning algorithm.
+5. According to the difference between the measured distance and the selected target, the master sends direction and speed commands to the motor slave.
+6. A scaled distance coordinate is transmitted to the radar slave for GLCD visualization.
